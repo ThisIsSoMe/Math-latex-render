@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "es2020",
+        "allowJs": false,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "baseUrl": ".",
+        "rootDir": "src",
+        "outDir": "dist"
+    },
+    "include": ["src"]
+}

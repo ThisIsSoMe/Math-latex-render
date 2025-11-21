@@ -1,0 +1,77 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLM 文本渲染器 (Markdown + LaTeX)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- MathJax v3 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        packages: {'[+]': ['noerrors']}
+      },
+      options: {
+        skipHtmlTags: {'[+]': ['code', 'pre']}
+      }
+    };
+  </script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header>
+    <h1>LLM 文本渲染器</h1>
+    <p>支持 <strong>Markdown</strong> 与 <strong>LaTeX 数学公式</strong>（由 MathJax 客户端渲染）。</p>
+  </header>
+
+  <main class="container">
+    <section class="editor">
+      <form method="POST">
+        <textarea name="text" id="text" placeholder="在这里粘贴/输入 LLM 输出的文本...">{{ raw }}</textarea>
+        <div class="buttons">
+          <button type="submit">渲染</button>
+          <button type="button" id="btn-preview">快速预览</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="preview">
+      <h2>渲染结果</h2>
+      <div id="rendered" class="rendered-content">{{ rendered|safe }}</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>安全提示：服务器端使用 <code>bleach</code> 对 HTML 做了白名单清理，以降低 XSS 风险。</p>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('btn-preview');
+    const area = document.getElementById('text');
+    const out = document.getElementById('rendered');
+
+    btn?.addEventListener('click', async () => {
+      try {
+        const res = await fetch('/api/render', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ text: area.value })
+        });
+        const data = await res.json();
+        out.innerHTML = data.html;
+        if (window.MathJax && window.MathJax.typesetPromise) {
+          await MathJax.typesetPromise([out]);
+        }
+        window.scrollTo({ top: out.offsetTop - 12, behavior: 'smooth' });
+      } catch (e) {
+        alert('预览失败：' + e);
+      }
+    });
+  </script>
+</body>
+</html>

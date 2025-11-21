@@ -1,0 +1,45 @@
+{
+  "name": "llm_math_render",
+  "version": "0.0.1",
+  "description": "llm的输出可以在该网页上进行渲染",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "echo \"Please implement your build script and modify scripts.build section in package.json\" && exit 1",
+    "lint-staged": "lint-staged",
+    "postinstall": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://wukun04@icode.baidu.com:8235/baidu/personal-code/llm_math_render"
+  },
+  "author": "wukun04",
+  "license": "UNLICENSED",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint",
+    "*.{css,less,scss,styl}": "stylelint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.12.13",
+    "@babel/eslint-plugin": "^7.12.13",
+    "@ecomfe/eslint-config": "^7.0.0",
+    "@ecomfe/stylelint-config": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": "^7.19.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "stylelint": "^14.9.1",
+    "typescript": "^4.7.4"
+  }
+}
