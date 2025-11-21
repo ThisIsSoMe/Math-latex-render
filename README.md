@@ -75,4 +75,4 @@ CMD ["python", "app.py"]
 Feel free to extend as needed: add user authentication, history saving, file uploads, server-side persistent storage, etc.
 
 # Authors
-wukun04 & GPT5
+ThisIsSoMe & GPT5
