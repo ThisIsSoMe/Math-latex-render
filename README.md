@@ -1,7 +1,7 @@
 
 # LLM 文本渲染器（Markdown + LaTeX）
 
-这是一个用 **Python + Flask** 搭建的极简网站，用来安全地渲染由大模型生成的文本，支持 Markdown 与 LaTeX 数学公式（通过 MathJax 在浏览器端渲染）。
+这是一个用 **Python + Flask** 搭建的极简网站，用来安全地渲染由大模型生成的文本，支持 Markdown 与 LaTeX 数学公式（通过 MathJax 在浏览器端渲染）。支持「$」和「\[,\]」形式的公式
 
 ## 功能
 - 左侧编辑器输入/粘贴文本，右侧预览渲染结果
