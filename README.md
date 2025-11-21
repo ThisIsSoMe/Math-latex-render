@@ -10,7 +10,7 @@
 - 使用 `MathJax v3` 在前端渲染 `$...$`（行内）与 `$$...$$`（块级）数学公式
 - 提供 `POST /api/render` JSON 接口，便于和你的 LLM 服务集成
 
-## 本地运行
+## 本地运行 & 快速开始
 
 ```bash
 # python -m venv .venv
@@ -74,3 +74,7 @@ CMD ["python", "app.py"]
 ---
 
 欢迎按需扩展：如加入用户鉴权、历史记录保存、文件上传、服务端持久化存储等。
+
+
+# 作者
+ThisIsSoMe & GPT5
